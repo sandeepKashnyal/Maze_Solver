@@ -23,17 +23,17 @@ def main():
 	path = BFS.solve(maze)
 	
 	print("Saving Image ...")
-	im = im.convert('RGB')
-	impixels = im.load()
+	im = im.convert('RGB')  #converts to rgb image
+	impixels = im.load()	#loads pixels of the image
 	length = len(path)
 	
 	for i in range(0,length-1):
 		a = path[i]
 		b = path[i+1]
 		
-		r = int((i / length) * 255)
+		r = int((i / length) * 255)   #creating a random value for r
 		#print(r)
-		px = (255-r,0,r)
+		px = (255-r,0,r)     #setting the pixel's value
 		if a[0] == b[0]:
 			for x in range(min(a[1],b[1]), max(a[1],b[1])):
 				impixels[x,a[0]] = px
@@ -41,8 +41,8 @@ def main():
 			for y in range(min(a[0],b[0]), max(a[0],b[0]) + 1):
 				impixels[a[1],y] = px
 
-	im.save("ans.png")
-	im.show()
+	im.save("ans.png")     #saving the image
+	im.show()       #outputs the image
 		
 
 main()
